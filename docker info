@@ -1,0 +1,42 @@
+**********************************
+Install docker in a faster way
+**********************************
+   $ curl -fsSL https://get.docker.com -o get-docker.sh
+   
+   $ sh get-docker.sh
+   
+**********************************   
+check the different version of docker
+**********************************
+
+apt-cache policy docker-ce
+
+apt-get install docker-ce=<VERSION>
+
+**********************************
+Install docker-compose 
+**********************************
+
+sudo curl -L https://github.com/docker/compose/releases/download/1.24.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+
+sudo chmod +x /usr/local/bin/docker-compose
+
+sudo mv ~/docker-compose /usr/local/bin/docker-compose 
+
+docker-compose --version
+
+*************************************
+Permission issues while copying .war file from jenkins to tomacat container
+*************************************
+
+chmod 666 /var/run/docker.sock
+
+ls -lrth docker.sock
+
+The above is almost right, but opens up a security gap that let’s everyone get access to docker.sock
+
+Instead of sudo chmod 666 /var/run/docker.sock which opens it to everyone, enter
+
+sudo chown root:docker /var/run/docker.sock
+
+That way root still has it’s connection with docker but anyone in the docker group gets access too.
