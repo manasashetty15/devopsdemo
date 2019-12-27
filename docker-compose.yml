@@ -39,9 +39,5 @@ services:
                         - "8081:9000"
                 volumes:
                         - /opt/sonarqube:/sonarqube
-						- /opt/sonarqube/sonar_data:/opt/sonarqube/data
-                        - /opt/sonarqube/sonar_extensions:/opt/sonarqube/extensions 
-                        - /opt/sonarqube/sonar_logs:/opt/sonarqube/logs
-
                 depends_on:
                         - postgres
